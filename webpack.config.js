@@ -1,7 +1,7 @@
-import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import WorkboxWebpackPlugin from "workbox-webpack-plugin";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -76,10 +76,9 @@ const config = {
     },
 };
 
-export default () => {
+module.exports = () => {
     if (isProduction) {
         config.mode = "production";
-
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
     } else {
         config.mode = "development";
