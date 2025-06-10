@@ -35,6 +35,12 @@ app.use(
 app.use(express.static(path.join(__dirname, "../../dist")));
 
 
+const userRouter = require("./routes/user.routes.js");
+
+// API routes
+app.use("/api/v1/users", userRouter);
+
+
 connectDB()
     .then(() => {
         app.listen(process.env.PORT || 8800, () => {
