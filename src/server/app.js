@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
+const connectDB = require("./db/index.js");
 
 dotenv.config({
   path: "../../.env",
@@ -34,12 +35,12 @@ app.use(
 app.use(express.static(path.join(__dirname, "../../dist")));
 
 
-
-try {
-  app.listen(process.env.PORT || 8800, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-  });
-} catch (error) {
-  console.error("Error starting the server:", error);
-  process.exit(1);
-}
+connectDB()
+    .then(() => {
+        app.listen(process.env.PORT || 8800, () => {
+            console.log(`Server is running on port ${process.env.PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.log("MongoDB connection error: ", err);
+    });
