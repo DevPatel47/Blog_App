@@ -1,12 +1,19 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
+const dotenv = require("dotenv");
 
-require("dotenv").config({
+dotenv.config({
   path: "../../.env",
 });
 
 const app = express();
+
+console.log("Environment Variables:", {
+  PORT: process.env.PORT,
+  CORS_ORIGIN: process.env.CORS_ORIGIN,
+});
 
 app.use(
   cors({
@@ -25,6 +32,8 @@ app.use(
   express.static(path.join(__dirname, "../../node_modules"))
 );
 app.use(express.static(path.join(__dirname, "../../dist")));
+
+
 
 try {
   app.listen(process.env.PORT || 8800, () => {
