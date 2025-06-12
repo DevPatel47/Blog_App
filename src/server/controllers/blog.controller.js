@@ -47,15 +47,12 @@ const createBlog = asyncHandler(async (req, res) => {
         if (!createdBlog) {
             return res
                 .status(500)
-                .json(
-                    new ApiError(500, "Something went wrong while creating blog")
-                );
+                .json(new ApiError(500, "Something went wrong while creating blog"));
         }
     
         return res
             .status(201)
-            .json(
-                new ApiResponse(201, "Blog created successfully", {
+            .json(new ApiResponse(201, "Blog created successfully", {
                 blog: createdBlog,
             })
         );
@@ -170,7 +167,8 @@ const editBlog = asyncHandler(async (req, res) => {
             editedBlog,
         })
     );
-})
+});
+
 
 module.exports = { 
     createBlog,

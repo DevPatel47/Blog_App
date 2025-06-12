@@ -11,8 +11,8 @@ const { verifyJWT } = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 router.route("/create-blog").post(verifyJWT, createBlog);
-router.route("/:blogId/like").post(verifyJWT, likeBlog);
-router.route("/:blogId/edit").patch(verifyJWT, editBlog);
-router.route("/:blogId/delete").delete(verifyJWT, deleteBlog);
+router.route("/:blogId/like-blog").post(verifyJWT, likeBlog);
+router.route("/:blogId/edit-blog").patch(verifyJWT, editBlog);
+router.route("/:blogId/delete-blog").delete(verifyJWT, deleteBlog);
 
 module.exports = router;

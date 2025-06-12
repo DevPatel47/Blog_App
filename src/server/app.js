@@ -37,10 +37,12 @@ app.use(express.static(path.join(__dirname, "../../dist")));
 
 const userRouter = require("./routes/user.routes.js");
 const blogRouter = require("./routes/blog.routes.js");
+const commentRouter = require("./routes/comment.routes.js");
 
 // API routes
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/blogs", blogRouter);
+app.use("/api/v1/comments", commentRouter);
 
 
 connectDB()

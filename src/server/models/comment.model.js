@@ -7,7 +7,7 @@ const commentSchema = new Schema({
         type: String,
         required: true,
         minlength: 2,
-        maxlength: 100,
+        maxlength: 1000,
         trim: true
     },
     authorId: {
@@ -19,3 +19,7 @@ const commentSchema = new Schema({
         ref: "Blog"
     }
 }, { timestamps: true });
+
+const Comment = mongoose.model("Comment", commentSchema);
+
+module.exports = { Comment };
