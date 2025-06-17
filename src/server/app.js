@@ -44,6 +44,10 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/blogs", blogRouter);
 app.use("/api/v1/comments", commentRouter);
 
+// Catch-all route to serve the main HTML file
+app.get('*name', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
+});
 
 connectDB()
     .then(() => {

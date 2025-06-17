@@ -11,6 +11,7 @@ const config = {
     entry: "./src/client/index.js",
     output: {
         path: path.resolve("dist"),
+        publicPath: "/",
     },
     devtool: "source-map",
     devServer: {
