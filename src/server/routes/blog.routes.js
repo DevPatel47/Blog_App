@@ -3,7 +3,8 @@ const {
     createBlog,
     likeBlog,
     editBlog,
-    deleteBlog
+    deleteBlog,
+    getAllBlogs
 } = require("../controllers/blog.controller");
 
 const { verifyJWT } = require("../middlewares/auth.middleware");
@@ -14,5 +15,6 @@ router.route("/create-blog").post(verifyJWT, createBlog);
 router.route("/:blogId/like-blog").post(verifyJWT, likeBlog);
 router.route("/:blogId/edit-blog").patch(verifyJWT, editBlog);
 router.route("/:blogId/delete-blog").delete(verifyJWT, deleteBlog);
+router.route("/").get(getAllBlogs);
 
 module.exports = router;

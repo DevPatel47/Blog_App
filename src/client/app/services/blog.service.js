@@ -69,4 +69,23 @@ BlogService.prototype.likeBlog = async function (blogId) {
     };
 };
 
+BlogService.prototype.getAllBlogs = async function () {
+    
+    try {
+    const response = await fetch(`${this.host}`, {
+      method: "GET",
+      credentials: "include"
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server responded with ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data || data.blogs || [];
+  } catch (err) {
+    console.error("Error fetching blogs:", err);
+    throw err;
+  }
+}
+
 module.exports = new BlogService();
